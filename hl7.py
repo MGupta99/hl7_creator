@@ -168,7 +168,6 @@ if __name__ == '__main__':
             'Subscriber DOB': lambda x: pd.to_datetime(x, errors='coerce')
         }
     )
-    print(data)
 
     insurance = pd.read_excel(sys.argv[2])
 
@@ -188,6 +187,7 @@ if __name__ == '__main__':
             message = generate_message(patient, message_time, msg_control_id, insurance)
         except ValueError as error:
             errors[i] = str(error)
+            continue
 
         messages[msg_control_id] = message
 
